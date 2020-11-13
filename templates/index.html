@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+table {
+    border-width: thin;
+    border-spacing: 2px;
+    border-style: none;
+    border-color: black;
+}
+td, th {
+    border: 1px solid black;
+    height: 30px;
+}
+table {
+    border-collapse: collapse;
+}
+.a{
+    width:90%;
+}
+</style>
+<body>
+<p align="center"><h1 align="center">Week11 Assignment - Flask Web Development</h1></p>
+<form action="/clear" method="post">
+    <table width="800" align="center">
+        <tr>
+            <th>Task Description</th>
+            <th>Email Address</th>
+            <th>Priority Level</th>
+        </tr>
+        {%for task in todolist%}
+        <tr>
+            <td>{{task[0]}}</td>
+            <td>{{task[1]}}</td>
+            <td>{{task[2]}}</td>
+        </tr>
+        {%endfor%}
+        <tr>
+            <td colspan="3">&nbsp;<input type="submit" value="Clear the List"></td>
+        </tr>
+
+    </table>
+</form>
+<br>
+<form action="/submit" method="post">
+    <table width="800" align="center">
+        <tr>
+            <td align="center" colspan="2">Submit New Items to the List</td>
+        </tr>
+        <tr>
+            <td align="center" width="20%">Task Description</td>
+            <td>&nbsp;<input type="text" name="Task" class="a"></input></td>
+        </tr>
+        <tr>
+            <td align="center">Email Address</td>
+            <td>&nbsp;<input type="text" name="Email" class="a"></input></td>
+        </tr>
+        <tr>
+            <td align="center">Priority Level</td>
+            <td>&nbsp;<select name="Priority">
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">&nbsp;<input type="submit" value="Add to the List">&nbsp;<span style="color:red">{{error_message}}</span></td>
+        </tr>
+
+
+    </table>
+</form>
+</body>
+</html>
